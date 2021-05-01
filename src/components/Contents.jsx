@@ -27,6 +27,10 @@ const Contents = () => {
     setTodo('');
   };
 
+  const deleteTodoHandler = () => {
+    console.log('delete button pushed!!');
+  }
+
   const changeTodoListHandler = (event) => {
     const index = event.target.id;
     const newTodoList = [...todoList];
@@ -51,6 +55,7 @@ const Contents = () => {
           {/* TodoListComponent */}
           <TodoList 
             todoList={todoList}
+            deleteTodoHandler={deleteTodoHandler}
             changeTodoListHandler={changeTodoListHandler}
           />
           

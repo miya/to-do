@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const TodoList = (props) => {
-  const { todoList, changeTodoListHandler } = props;
+  const { todoList, deleteTodoHandler, changeTodoListHandler } = props;
 
   return (
     <>
@@ -25,7 +25,7 @@ const TodoList = (props) => {
                     <>{todo.text}</>
                   </>
                 }
-                <button className="delete-btn">
+                <button className="delete-btn" onClick={deleteTodoHandler}>
                   <FontAwesomeIcon icon={faTrash} color="#cccccc"/>
                 </button>
               </div>
@@ -39,6 +39,7 @@ const TodoList = (props) => {
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
+  deleteTodoHandler: PropTypes.func,
   changeTodoListHandler: PropTypes.func,
 }
 
