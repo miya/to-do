@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, ListGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const TodoList = (props) => {
   const { todoList, changeTodoListHandler } = props;
@@ -23,6 +25,9 @@ const TodoList = (props) => {
                     <>{todo.text}</>
                   </>
                 }
+                <button className="delete-btn">
+                  <FontAwesomeIcon icon={faTrash} color="#cccccc"/>
+                </button>
               </div>
             </ListGroup.Item>
           ) })}
