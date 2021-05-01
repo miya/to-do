@@ -5,10 +5,10 @@ import TodoList from './TodoList'
 
 const Contents = () => {
   const defaultTodoList = [
-    {text: "reactチュートリアル", done: false},
-    {text: "筋トレ", done: false},
-    {text: "useState", done: false},
-    {text: "バイト", done: false}
+    {text: "task-1", done: false},
+    {text: "task-2", done: false},
+    {text: "task-3", done: false},
+    {text: "task-4", done: false}
   ];
 
   const [todo, setTodo] = useState('');
@@ -27,9 +27,13 @@ const Contents = () => {
     setTodo('');
   };
 
-  const deleteTodoHandler = () => {
-    console.log('delete button pushed!!');
-  }
+  const deleteTodoHandler = (event, index) => {
+    event.preventDefault();
+    console.log(index)
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+    setTodoList(newTodoList);
+  };
 
   const changeTodoListHandler = (event) => {
     const index = event.target.id;

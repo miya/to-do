@@ -25,7 +25,7 @@ const TodoList = (props) => {
                     <>{todo.text}</>
                   </>
                 }
-                <button className="delete-btn" onClick={deleteTodoHandler}>
+                <button className="delete-btn" onClick={e => deleteTodoHandler(e, index)}>
                   <FontAwesomeIcon icon={faTrash} color="#cccccc"/>
                 </button>
               </div>
