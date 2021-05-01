@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 const AddTodo = (props) => {
@@ -20,6 +21,11 @@ const AddTodo = (props) => {
       </InputGroup>
     </>
   )
+}
+
+AddTodo.propTypes = {
+  todo: PropTypes.string,
+  inputTodoHandler: PropTypes.func,
 }
 
 export default AddTodo;
