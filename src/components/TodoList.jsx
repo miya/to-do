@@ -10,7 +10,7 @@ const TodoList = (props) => {
       <Card>
         <ListGroup>
           {todoList.map((todo, index) => { return (
-            <ListGroup.Item key={index}>
+            <ListGroup.Item key={index} variant={ todo.done && 'success' }>
               <input id={index} type="checkbox" className="mr-2" onChange={changeTodoListHandler}></input>
               {todo.done && 
                 <>
