@@ -16,7 +16,7 @@ const AddTodo = (props) => {
           onChange={e => inputTodoHandler(e)}
         />
         <InputGroup.Append>
-          <Button variant="primary" onClick={addTodoListHandler}>Add</Button>
+          <Button variant="primary" disabled={!todo} onClick={addTodoListHandler}>Add</Button>
         </InputGroup.Append>
       </InputGroup>
     </>
