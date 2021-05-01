@@ -5,10 +5,10 @@ import TodoList from './TodoList'
 
 const Contents = () => {
   const defaultTodoList = [
-    {text: "reactチュートリアル", done: true},
-    {text: "筋トレ", done: true},
-    {text: "useState", done: true},
-    {text: "バイト", done: true}
+    {text: "reactチュートリアル", done: false},
+    {text: "筋トレ", done: false},
+    {text: "useState", done: false},
+    {text: "バイト", done: false}
   ];
 
   const [todo, setTodo] = useState('');
@@ -16,6 +16,13 @@ const Contents = () => {
 
   const inputTodoHandler = (event) => {
     setTodo(event.target.value);
+  };
+
+  const addTodoListHandler = () => {
+    setTodoList([... todoList, {
+      text: todo,
+      done: false,
+    }])
   };
 
   const changeTodoListHandler = (event) => {
@@ -36,6 +43,7 @@ const Contents = () => {
         　<AddTodo 
             todo={todo}
             inputTodoHandler={inputTodoHandler} 
+            addTodoListHandler={addTodoListHandler}
           />
 
           {/* TodoListComponent */}

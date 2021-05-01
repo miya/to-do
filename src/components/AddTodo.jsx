@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 const AddTodo = (props) => {
 
-  const { todo, inputTodoHandler } = props;
+  const { todo, inputTodoHandler, addTodoListHandler } = props;
 
   return (
     <>
@@ -16,7 +16,7 @@ const AddTodo = (props) => {
           onChange={e => inputTodoHandler(e)}
         />
         <InputGroup.Append>
-          <Button variant="primary">Add</Button>
+          <Button variant="primary" onClick={addTodoListHandler}>Add</Button>
         </InputGroup.Append>
       </InputGroup>
     </>
