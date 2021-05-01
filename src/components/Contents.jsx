@@ -12,6 +12,7 @@ const Contents = () => {
   ];
 
   const [todo, setTodo] = useState('');
+
   const [todoList, setTodoList] = useState(defaultTodoList);
 
   const inputTodoHandler = (event) => {
@@ -19,7 +20,7 @@ const Contents = () => {
   };
 
   const addTodoListHandler = () => {
-    setTodoList([... todoList, {
+    setTodoList([...todoList, {
       text: todo,
       done: false,
     }])
@@ -28,12 +29,12 @@ const Contents = () => {
 
   const changeTodoListHandler = (event) => {
     const index = event.target.id;
-    const newTodoList = [... todoList];
+    const newTodoList = [...todoList];
     const text = newTodoList[index]['text'];
     const done = newTodoList[index]['done'];
     newTodoList.splice(index, 1, {text: text, done: !done});
     setTodoList(newTodoList);
-  }
+  };
 
   return (
     <>
