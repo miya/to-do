@@ -4,18 +4,28 @@ import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 
 const Contents = () => {
-  const [todo, setTodo] = useState('');
-
-  const [todoList, setTodoList] = useState([
+  const defaultTodoList = [
     {text: "reactチュートリアル", done: true},
-    {text: "筋トレ", done: false},
+    {text: "筋トレ", done: true},
     {text: "useState", done: true},
     {text: "バイト", done: true}
-  ]);
+  ];
+
+  const [todo, setTodo] = useState('');
+  const [todoList, setTodoList] = useState(defaultTodoList);
 
   const inputTodoHandler = (event) => {
     setTodo(event.target.value);
   };
+
+  const changeTodoListHandler = (event) => {
+    const index = event.target.id;
+    const newTodoList = [... todoList];
+    const text = newTodoList[index]['text'];
+    const done = newTodoList[index]['done'];
+    newTodoList.splice(index, 1, {text: text, done: !done});
+    setTodoList(newTodoList);
+  }
 
   return (
     <>
@@ -31,6 +41,7 @@ const Contents = () => {
           {/* TodoListComponent */}
           <TodoList 
             todoList={todoList}
+            changeTodoListHandler={changeTodoListHandler}
           />
           
         </Card.Body>

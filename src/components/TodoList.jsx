@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, ListGroup } from 'react-bootstrap';
 
 const TodoList = (props) => {
-  const { todoList } = props;
+  const { todoList, changeTodoListHandler } = props;
 
   return (
     <>
@@ -11,7 +11,7 @@ const TodoList = (props) => {
         <ListGroup>
           {todoList.map((todo, index) => { return (
             <ListGroup.Item key={index}>
-              <input id={index} type="checkbox" className="mr-2"></input>
+              <input id={index} type="checkbox" className="mr-2" onChange={changeTodoListHandler}></input>
               {todo.done && 
                 <>
                   <>{todo.text}</>
