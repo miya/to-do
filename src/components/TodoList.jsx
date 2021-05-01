@@ -14,12 +14,12 @@ const TodoList = (props) => {
               <input id={index} type="checkbox" className="mr-2" onChange={changeTodoListHandler}></input>
               {todo.done && 
                 <>
-                  <>{todo.text}</>
+                  <strike>{todo.text}</strike>
                 </>
               }
               {!todo.done && 
                 <>
-                  <strike>{todo.text}</strike>
+                  <>{todo.text}</>
                 </>
               }
             </ListGroup.Item>
