@@ -23,6 +23,7 @@ const Contents = () => {
       text: todo,
       done: false,
     }])
+    setTodo('');
   };
 
   const changeTodoListHandler = (event) => {
