@@ -11,17 +11,19 @@ const TodoList = (props) => {
         <ListGroup>
           {todoList.map((todo, index) => { return (
             <ListGroup.Item key={index} variant={ todo.done && 'success' }>
-              <input id={index} type="checkbox" className="mr-2" onChange={changeTodoListHandler}></input>
-              {todo.done && 
-                <>
-                  <strike>{todo.text}</strike>
-                </>
-              }
-              {!todo.done && 
-                <>
-                  <>{todo.text}</>
-                </>
-              }
+              <div>
+                <input id={index} type="checkbox" className="mr-2" onChange={changeTodoListHandler}></input>
+                {todo.done && 
+                  <>
+                    <strike>{todo.text}</strike>
+                  </>
+                }
+                {!todo.done && 
+                  <>
+                    <>{todo.text}</>
+                  </>
+                }
+              </div>
             </ListGroup.Item>
           ) })}
         </ListGroup>
