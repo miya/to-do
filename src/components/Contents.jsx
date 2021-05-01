@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import AddText from './AddText'
+import AddTodo from './AddTodo'
 
 const Contents = () => {
   return (
@@ -8,7 +8,7 @@ const Contents = () => {
       <Card className="mx-3 mt-3">
         <Card.Body>
 
-        <AddText />
+        <AddTodo />
           
         </Card.Body>
       </Card>
