@@ -1,12 +1,18 @@
 import React from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
-const AddText = () => {
+const AddTodo = (props) => {
+
+  const { todo, inputTodoHandler } = props;
+
   return (
     <>
       <InputGroup className="mb-3">
         <FormControl
-          placeholder="Todo Text"
+          type="text"
+          placeholder="add Todo"
+          value={todo}
+          onChange={e => inputTodoHandler(e)}
         />
         <InputGroup.Append>
           <Button variant="primary">Add</Button>
@@ -16,5 +22,5 @@ const AddText = () => {
   )
 }
 
-export default AddText;
+export default AddTodo;
 
