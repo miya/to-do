@@ -1,7 +1,9 @@
+import Contents from './components/Contents'
+
 const App = () => {
   return (
     <>
-      <p>Hello React!</p>
+      <Contents />
     </>
   )
 };
