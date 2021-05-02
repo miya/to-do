@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import TodoBox from './components/TodoBox';
-import './styles/todo-list.scss'
+import './App.scss'
 
 const App = () => {
   return (
