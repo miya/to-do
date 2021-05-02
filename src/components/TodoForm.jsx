@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
-const AddTodo = (props) => {
+const TodoForm = (props) => {
 
   const { todo, inputTodoHandler, addTodoListHandler } = props;
 
@@ -23,10 +23,10 @@ const AddTodo = (props) => {
   )
 }
 
-AddTodo.propTypes = {
+TodoForm.propTypes = {
   todo: PropTypes.string,
   inputTodoHandler: PropTypes.func,
 }
 
-export default AddTodo;
+export default TodoForm;
 
