@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-const Contents = () => {
+const TodoBox = () => {
   const [todo, setTodo] = useState('');
 
   const [todoList, setTodoList] = useState([]);
@@ -90,4 +90,4 @@ const Contents = () => {
   );
 };
 
-export default Contents;
+export default TodoBox;
