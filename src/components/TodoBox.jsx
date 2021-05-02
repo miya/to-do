@@ -1,14 +1,14 @@
 import {React, useState} from 'react';
 import { Card } from 'react-bootstrap';
-import AddTodo from './AddTodo'
+import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
 const Contents = () => {
   const defaultTodoList = [
-    {text: "reactチュートリアル", done: false},
-    {text: "筋トレ", done: false},
-    {text: "useState", done: false},
-    {text: "バイト", done: false}
+    {text: "task-1", done: false},
+    {text: "task-2", done: false},
+    {text: "task-3", done: false},
+    {text: "task-4", done: false}
   ];
 
   const [todo, setTodo] = useState('');
@@ -27,6 +27,13 @@ const Contents = () => {
     setTodo('');
   };
 
+  const deleteTodoListHandler = (event, index) => {
+    event.preventDefault();
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+    setTodoList(newTodoList);
+  };
+
   const changeTodoListHandler = (event) => {
     const index = event.target.id;
     const newTodoList = [...todoList];
@@ -41,8 +48,8 @@ const Contents = () => {
       <Card className="mx-3 mt-3">
         <Card.Body>
 
-          {/* AddTodoComponent */}
-        　<AddTodo 
+          {/* TodoFormComponent */}
+        　<TodoForm
             todo={todo}
             inputTodoHandler={inputTodoHandler} 
             addTodoListHandler={addTodoListHandler}
@@ -51,6 +58,7 @@ const Contents = () => {
           {/* TodoListComponent */}
           <TodoList 
             todoList={todoList}
+            deleteTodoListHandler={deleteTodoListHandler}
             changeTodoListHandler={changeTodoListHandler}
           />
           
