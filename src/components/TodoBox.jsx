@@ -63,6 +63,7 @@ const TodoBox = () => {
 
   useEffect(() => {
     initTodoList()
+    console.log()
   }, [])
 
   return (
