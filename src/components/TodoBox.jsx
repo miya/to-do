@@ -51,6 +51,11 @@ const Contents = () => {
     setTodoList(newTodoList);
   };
 
+  const updateLocalStorage = (item) => {
+    const localItem = JSON.stringify(item);
+    localStorage.setItem('todoList', [localItem]);
+  };
+
   useEffect(() => {
     initTodoList()
   }, [])
