@@ -29,7 +29,6 @@ const Contents = () => {
 
   const deleteTodoHandler = (event, index) => {
     event.preventDefault();
-    console.log(index)
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
