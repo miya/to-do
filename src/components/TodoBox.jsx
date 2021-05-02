@@ -16,10 +16,10 @@ const Contents = () => {
       {text: "task-4", done: false}
     ];  
     const localItem = JSON.parse(localStorage.getItem('todoList'));
-    if (localItem) {
-      setTodoList(localItem);
-    } else {
+    if (!localItem || localItem.length === 0) {
       setTodoList(defaultTodoList);
+    } else {
+      setTodoList(localItem);
     }
   };
 
@@ -28,10 +28,12 @@ const Contents = () => {
   };
 
   const addTodoListHandler = () => {
-    setTodoList([...todoList, {
+    const newTodoList = [...todoList];
+    newTodoList.unshift({
       text: todo,
       done: false,
-    }])
+    })
+    setTodoList(newTodoList);
     setTodo('');
   };
 
