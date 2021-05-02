@@ -1,12 +1,12 @@
 import Header from './components/Header';
-import Contents from './components/Contents';
+import TodoBox from './components/TodoBox';
 import './styles/todo-list.scss'
 
 const App = () => {
   return (
     <>
       <Header />
-      <Contents />
+      <TodoBox />
     </>
   )
 };

@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 import { Card } from 'react-bootstrap';
-import AddTodo from './AddTodo'
+import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
 const Contents = () => {
@@ -48,8 +48,8 @@ const Contents = () => {
       <Card className="mx-3 mt-3">
         <Card.Body>
 
-          {/* AddTodoComponent */}
-        　<AddTodo 
+          {/* TodoFormComponent */}
+        　<TodoForm
             todo={todo}
             inputTodoHandler={inputTodoHandler} 
             addTodoListHandler={addTodoListHandler}
