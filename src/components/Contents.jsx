@@ -27,7 +27,7 @@ const Contents = () => {
     setTodo('');
   };
 
-  const deleteTodoHandler = (event, index) => {
+  const deleteTodoListHandler = (event, index) => {
     event.preventDefault();
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
@@ -58,7 +58,7 @@ const Contents = () => {
           {/* TodoListComponent */}
           <TodoList 
             todoList={todoList}
-            deleteTodoHandler={deleteTodoHandler}
+            deleteTodoListHandler={deleteTodoListHandler}
             changeTodoListHandler={changeTodoListHandler}
           />
           
