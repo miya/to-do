@@ -35,6 +35,7 @@ const Contents = () => {
     })
     setTodoList(newTodoList);
     setTodo('');
+    updateLocalStorage(newTodoList);
   };
 
   const deleteTodoListHandler = (event, index) => {
@@ -42,6 +43,7 @@ const Contents = () => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
+    updateLocalStorage(newTodoList);
   };
 
   const changeTodoListHandler = (event) => {
@@ -51,6 +53,7 @@ const Contents = () => {
     const done = newTodoList[index]['done'];
     newTodoList.splice(index, 1, {text: text, done: !done});
     setTodoList(newTodoList);
+    updateLocalStorage(newTodoList);
   };
 
   const updateLocalStorage = (item) => {
