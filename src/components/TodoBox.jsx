@@ -18,7 +18,8 @@ const TodoBox = () => {
     const localItem = JSON.parse(localStorage.getItem('todoList'));
     if (!localItem || localItem.length === 0) {
       setTodoList(defaultTodoList);
-    } else {
+    }
+    else {
       setTodoList(localItem);
     }
   };
