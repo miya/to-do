@@ -6,12 +6,12 @@ const Header = () => {
     <>
       <Navbar expend="md" bg="dark" variant="dark">
         <Navbar.Brand>
-          <img src={`${process.env.PUBLIC_URL}/Logo.png`} width="20" height="20" alt="logo"/>{' '}
+          <img src={`${process.env.PUBLIC_URL}/Logo.png`} width="20" height="20" alt="logo" />{' '}
           To-Do
         </Navbar.Brand>
       </Navbar>
     </>
-  )
-}
+  );
+};
 
 export default Header;
