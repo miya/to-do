@@ -16,7 +16,7 @@ const TodoBox = () => {
       { text: 'task-4', done: false },
     ];
     const localItem = JSON.parse(localStorage.getItem('todoList'));
-    if (!localItem || localItem.length === 0) {
+    if (!localItem) {
       setTodoList(defaultTodoList);
     }
     else {
