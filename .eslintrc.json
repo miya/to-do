@@ -7,5 +7,7 @@
   "parserOptions": {},
   "env": {"browser": true},
   "globals": {},
-  "rules": {}
+  "rules": {
+    "object-curly-newline": ["off"]
+  }
 }
