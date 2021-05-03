@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Badge } from 'react-bootstrap';
 
 const TodoCount = (props) => {
   const { todoList } = props;
@@ -19,7 +20,10 @@ const TodoCount = (props) => {
 
   return (
     <>
-      <p>Done: {doneCount} NotDone: {notDoneCount}</p>
+      <div className="text-center mt-3">
+        <Badge className="mr-2" variant="success">done:{doneCount}</Badge>
+        <Badge variant="danger">not done:{notDoneCount}</Badge>
+      </div>
     </>
   );
 };
