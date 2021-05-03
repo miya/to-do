@@ -20,13 +20,13 @@ const TodoForm = (props) => {
         </InputGroup.Append>
       </InputGroup>
     </>
-  )
-}
+  );
+};
 
 TodoForm.propTypes = {
   todo: PropTypes.string,
   inputTodoHandler: PropTypes.func,
-}
+  addTodoListHandler: PropTypes.func,
+};
 
 export default TodoForm;
-

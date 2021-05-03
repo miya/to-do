@@ -10,26 +10,28 @@ const TodoList = (props) => {
     <>
       <Card>
         <ListGroup>
-          {todoList.map((todo, index) => { return (
-            <TodoItem 
-              key={index}
-              todo={todo}
-              index={index}
-              deleteTodoListHandler={deleteTodoListHandler}
-              changeTodoListHandler={changeTodoListHandler}
-            />
-          )})}
+          {todoList.map((todo, index) => {
+            return (
+              <TodoItem
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                todo={todo}
+                index={index}
+                deleteTodoListHandler={deleteTodoListHandler}
+                changeTodoListHandler={changeTodoListHandler}
+              />
+            );
+          })}
         </ListGroup>
       </Card>
     </>
-  )
+  );
 };
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
   deleteTodoListHandler: PropTypes.func,
   changeTodoListHandler: PropTypes.func,
-}
+};
 
 export default TodoList;
-
