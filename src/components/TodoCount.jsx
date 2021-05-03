@@ -27,7 +27,7 @@ const TodoCount = (props) => {
           <small className="text-secondary">There are no unfinished Todo&apos;s.</small>
         )}
         {notDoneCount !== 0 && (
-          <Badge variant="danger">not done:{notDoneCount}</Badge>
+          <Badge pill variant="danger">unfinished:{notDoneCount}</Badge>
         )}
       </div>
     </>
