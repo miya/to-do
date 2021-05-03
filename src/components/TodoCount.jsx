@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const TodoCount = (props) => {
@@ -14,9 +14,13 @@ const TodoCount = (props) => {
     setNotDoneCount(notDoneCount);
   };
 
+  useEffect(() => {
+    getCount();
+  }, [todoList]);
+
   return (
     <>
-      <p>TodoCountComponent</p>
+      <p>Done: {doneCount} NotDone: {notDoneCount}</p>
     </>
   );
 };
