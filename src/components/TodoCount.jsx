@@ -9,7 +9,7 @@ const TodoCount = (props) => {
 
   const getCount = () => {
     const doneCount = todoList.filter((todo) => { return todo.done }).length;
-    const notDoneCount = todoList - doneCount;
+    const notDoneCount = todoList.length - doneCount;
     setDoneCount(doneCount);
     setNotDoneCount(notDoneCount);
   };
