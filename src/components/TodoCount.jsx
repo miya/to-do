@@ -5,6 +5,7 @@ import { Badge } from 'react-bootstrap';
 const TodoCount = (props) => {
   const { todoList } = props;
 
+  // eslint-disable-next-line no-unused-vars
   const [doneCount, setDoneCount] = useState(0);
   const [notDoneCount, setNotDoneCount] = useState(0);
 
@@ -21,8 +22,13 @@ const TodoCount = (props) => {
   return (
     <>
       <div className="text-center mt-3">
-        <Badge className="mr-2" variant="success">done:{doneCount}</Badge>
-        <Badge variant="danger">not done:{notDoneCount}</Badge>
+        {/* <Badge className="mr-2" variant="success">done:{doneCount}</Badge> */}
+        {notDoneCount === 0 && (
+          <small className="text-secondary">There are no unfinished Todo&apos;s.</small>
+        )}
+        {notDoneCount !== 0 && (
+          <Badge variant="danger">not done:{notDoneCount}</Badge>
+        )}
       </div>
     </>
   );
