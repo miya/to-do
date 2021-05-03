@@ -8,7 +8,7 @@ const TodoForm = (props) => {
 
   return (
     <>
-      <InputGroup className="mb-3">
+      <InputGroup>
         <FormControl
           type="text"
           placeholder="add Todo"
