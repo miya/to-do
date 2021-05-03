@@ -76,14 +76,16 @@ const TodoBox = () => {
             addTodoListHandler={addTodoListHandler}
           />
 
-          <TodoCount
-            todoList={todoList}
-          />
           {/* TodoListComponent */}
           <TodoList
             todoList={todoList}
             deleteTodoListHandler={deleteTodoListHandler}
             changeTodoListHandler={changeTodoListHandler}
+          />
+
+          {/* TodoCountComponent */}
+          <TodoCount
+            todoList={todoList}
           />
         </Card.Body>
       </Card>
