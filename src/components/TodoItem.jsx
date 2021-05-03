@@ -13,7 +13,7 @@ const TodoItem = (props) => {
         <div>
 
           {/* checkbox */}
-          <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={changeTodoListHandler}></input>
+          <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => changeTodoListHandler(index)}></input>
 
           {/* todo */}
           {todo.done && (
@@ -24,7 +24,7 @@ const TodoItem = (props) => {
           )}
 
           {/* delete button */}
-          <button type="button" className="delete-btn" onClick={e => deleteTodoListHandler(e, index)}>
+          <button type="button" className="delete-btn" onClick={() => deleteTodoListHandler(index)}>
             <FontAwesomeIcon icon={faTrash} color="#cccccc" />
           </button>
 

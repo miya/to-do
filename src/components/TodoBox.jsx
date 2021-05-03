@@ -44,16 +44,14 @@ const TodoBox = () => {
     updateLocalStorage(newTodoList);
   };
 
-  const deleteTodoListHandler = (event, index) => {
-    event.preventDefault();
+  const deleteTodoListHandler = (index) => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
   };
 
-  const changeTodoListHandler = (event) => {
-    const index = event.target.id;
+  const changeTodoListHandler = (index) => {
     const newTodoList = [...todoList];
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
