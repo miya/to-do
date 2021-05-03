@@ -16,16 +16,12 @@ const TodoItem = (props) => {
           <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={changeTodoListHandler}></input>
 
           {/* todo */}
-          {
-            // eslint-disable-next-line operator-linebreak
-            todo.done &&
-              <strike>{todo.text}</strike>
-          }
-          {
-            // eslint-disable-next-line operator-linebreak
-            !todo.done &&
-              <>{todo.text}</>
-          }
+          {todo.done && (
+            <strike>{todo.text}</strike>
+          )}
+          {!todo.done && (
+            <>{todo.text}</>
+          )}
 
           {/* delete button */}
           <button type="button" className="delete-btn" onClick={e => deleteTodoListHandler(e, index)}>
