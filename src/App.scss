@@ -1,6 +1,13 @@
 .delete-btn {
-  border: none;  
-  outline: none; 
-  background: transparent; 
+  border: none;
+  outline: none;
+  background: transparent;
   float: right;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
 }
