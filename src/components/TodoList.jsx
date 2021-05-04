@@ -10,7 +10,7 @@ const TodoList = (props) => {
     <>
       {todoList.length !== 0 && (
         <Card className="mt-3">
-          <ListGroup>
+          <ListGroup className="flex-column-reverse">
             {todoList.map((todo, index) => {
               return (
                 <TodoItem
