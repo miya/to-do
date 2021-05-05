@@ -36,7 +36,7 @@ const TodoBox = () => {
 
   const addTodoListHandler = () => {
     const newTodoList = [...todoList];
-    newTodoList.unshift({
+    newTodoList.push({
       text: todo,
       done: false,
     });
