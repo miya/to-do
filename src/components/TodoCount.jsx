@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Badge } from 'react-bootstrap';
+import { Badge, ProgressBar } from 'react-bootstrap';
 
 const TodoCount = (props) => {
   const { todoList } = props;
@@ -23,6 +23,10 @@ const TodoCount = (props) => {
 
   return (
     <>
+      <div className="mt-3">
+        <ProgressBar variant="success" now={rate} label={`${rate}%`} />
+      </div>
+
       {/* <div className="text-center mt-3"> */}
         {/* <Badge className="mr-2" variant="success">done:{doneCount}</Badge> */}
         {/* {notDoneCount === 0 && ( */}
