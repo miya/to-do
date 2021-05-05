@@ -7,12 +7,14 @@ const TodoProgressBar = (props) => {
 
   const [rate, setRate] = useState(0);
 
+  const getCount = () => {
+    const doneCount = todoList.filter((todo) => { return todo.done }).length;
+    setRate(Math.round((doneCount / todoList.length) * 100));
+  };
+
   useEffect(() => {
-    const getCount = () => {
-      const doneCount = todoList.filter((todo) => { return todo.done }).length;
-      setRate(Math.round((doneCount / todoList.length) * 100))
-    };
     getCount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todoList]);
 
   return (
