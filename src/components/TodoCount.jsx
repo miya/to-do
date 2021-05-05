@@ -1,22 +1,16 @@
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Badge, ProgressBar } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 
 const TodoCount = (props) => {
   const { todoList } = props;
 
-  // eslint-disable-next-line no-unused-vars
-  const [doneCount, setDoneCount] = useState(0);
-  const [notDoneCount, setNotDoneCount] = useState(0);
   const [rate, setRate] = useState(0);
 
   useEffect(() => {
     const getCount = () => {
       const doneCount = todoList.filter((todo) => { return todo.done }).length;
-      const notDoneCount = todoList.length - doneCount;
       setRate(Math.round((doneCount / todoList.length) * 100))
-      setDoneCount(doneCount);
-      setNotDoneCount(notDoneCount);
     };
     getCount();
   }, [todoList]);
@@ -26,16 +20,6 @@ const TodoCount = (props) => {
       <div className="mt-3">
         <ProgressBar variant="success" now={rate} label={`${rate}%`} />
       </div>
-
-      {/* <div className="text-center mt-3"> */}
-        {/* <Badge className="mr-2" variant="success">done:{doneCount}</Badge> */}
-        {/* {notDoneCount === 0 && ( */}
-          {/* <small className="text-secondary">There are no unfinished Todo&apos;s.</small> */}
-        {/* )} */}
-        {/* {notDoneCount !== 0 && ( */}
-          {/* <Badge pill variant="danger">unfinished:{notDoneCount}</Badge> */}
-        {/* )} */}
-      {/* </div> */}
     </>
   );
 };
