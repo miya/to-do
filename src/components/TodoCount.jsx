@@ -8,11 +8,13 @@ const TodoCount = (props) => {
   // eslint-disable-next-line no-unused-vars
   const [doneCount, setDoneCount] = useState(0);
   const [notDoneCount, setNotDoneCount] = useState(0);
+  const [rate, setRate] = useState(0);
 
   useEffect(() => {
     const getCount = () => {
       const doneCount = todoList.filter((todo) => { return todo.done }).length;
       const notDoneCount = todoList.length - doneCount;
+      setRate(Math.round((doneCount / todoList.length) * 100))
       setDoneCount(doneCount);
       setNotDoneCount(notDoneCount);
     };
