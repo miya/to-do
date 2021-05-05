@@ -8,7 +8,7 @@ const Footer = () => {
       <small>
         <a className="text-secondary" href="https://github.com/miya/to-do">Github</a>
         <FontAwesomeIcon className="text-secondary extra-link-icon mb-1 ml-1" icon={faExternalLinkAlt} />
-        <text> / </text>
+        <text className="text-secondary"> / </text>
       </small>
       <small className="text-secondary">Copyright (C) 2021 to-do</small>
     </footer>
