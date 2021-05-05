@@ -23,15 +23,15 @@ const TodoCount = (props) => {
 
   return (
     <>
-      <div className="text-center mt-3">
+      {/* <div className="text-center mt-3"> */}
         {/* <Badge className="mr-2" variant="success">done:{doneCount}</Badge> */}
-        {notDoneCount === 0 && (
-          <small className="text-secondary">There are no unfinished Todo&apos;s.</small>
-        )}
-        {notDoneCount !== 0 && (
-          <Badge pill variant="danger">unfinished:{notDoneCount}</Badge>
-        )}
-      </div>
+        {/* {notDoneCount === 0 && ( */}
+          {/* <small className="text-secondary">There are no unfinished Todo&apos;s.</small> */}
+        {/* )} */}
+        {/* {notDoneCount !== 0 && ( */}
+          {/* <Badge pill variant="danger">unfinished:{notDoneCount}</Badge> */}
+        {/* )} */}
+      {/* </div> */}
     </>
   );
 };
