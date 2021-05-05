@@ -8,7 +8,7 @@ const TodoList = (props) => {
 
   return (
     <>
-      <ListGroup className="mt-3">
+      <ListGroup className={todoList.length === 0 ? true : 'mt-3'}>
         {todoList.map((todo, index) => {
           return (
             <TodoItem

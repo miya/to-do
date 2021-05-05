@@ -2,7 +2,9 @@ import { React, useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-import TodoCount from './TodoCount';
+
+// eslint-disable-next-line no-unused-vars
+import TodoProgressBar from './TodoProgressBar';
 
 const TodoBox = () => {
   const [todo, setTodo] = useState('');
@@ -74,11 +76,6 @@ const TodoBox = () => {
             todo={todo}
             inputTodoHandler={inputTodoHandler}
             addTodoListHandler={addTodoListHandler}
-          />
-
-          {/* TodoCountComponent */}
-          <TodoCount
-            todoList={todoList}
           />
 
           {/* TodoListComponent */}
