@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ProgressBar } from 'react-bootstrap';
 
-const TodoCount = (props) => {
+const TodoProgressBar = (props) => {
   const { todoList } = props;
 
   const [rate, setRate] = useState(0);
@@ -24,8 +24,8 @@ const TodoCount = (props) => {
   );
 };
 
-TodoCount.propTypes = {
+TodoProgressBar.propTypes = {
   todoList: PropTypes.array,
 };
 
-export default TodoCount;
+export default TodoProgressBar;

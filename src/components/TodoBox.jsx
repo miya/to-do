@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-import TodoCount from './TodoCount';
+import TodoProgressBar from './TodoProgressBar';
 
 const TodoBox = () => {
   const [todo, setTodo] = useState('');
@@ -76,8 +76,8 @@ const TodoBox = () => {
             addTodoListHandler={addTodoListHandler}
           />
 
-          {/* TodoCountComponent */}
-          <TodoCount
+          {/* TodoProgressBarComponent */}
+          <TodoProgressBar
             todoList={todoList}
           />
 
