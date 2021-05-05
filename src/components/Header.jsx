@@ -4,7 +4,7 @@ import { Navbar } from 'react-bootstrap';
 const Header = () => {
   return (
     <>
-      <Navbar expend="md" bg="dark" variant="dark">
+      <Navbar expend="md">
         <Navbar.Brand>
           <img src={`${process.env.PUBLIC_URL}/Logo.png`} width="20" height="20" alt="logo" />{' '}
           To-Do
