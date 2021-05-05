@@ -8,7 +8,6 @@ const TodoList = (props) => {
 
   return (
     <>
-      {todoList.length !== 0 && (
         <ListGroup className="mt-3">
           {todoList.map((todo, index) => {
             return (
@@ -23,7 +22,6 @@ const TodoList = (props) => {
             );
           })}
         </ListGroup>
-      )}
     </>
   );
 };
