@@ -84,6 +84,18 @@ const TodoBox = () => {
             deleteTodoListHandler={deleteTodoListHandler}
             changeTodoListHandler={changeTodoListHandler}
           />
+
+          {todoList.length === 0 && (
+            <div className="mt-3 text-center">
+              <small className="text-secondary">There is no todo.</small>
+            </div>
+          )}
+
+          {todoList.length > 0 && todoList.filter((todo) => { return !todo.done }).length === 0 && (
+            <div className="mt-3 text-center">
+              <small className="text-secondary">There are no unfinished todo&apos;s.</small>
+            </div>
+          )}
         </Card.Body>
       </Card>
     </>
