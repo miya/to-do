@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useCallback } from 'react';
 import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
@@ -36,7 +36,7 @@ const TodoBox = () => {
     setTodo(event.target.value);
   };
 
-  const addTodoListHandler = () => {
+  const addTodoListHandler = useCallback(() => {
     const newTodoList = [...todoList];
     newTodoList.push({
       text: todo,
@@ -45,23 +45,23 @@ const TodoBox = () => {
     setTodoList(newTodoList);
     setTodo('');
     updateLocalStorage(newTodoList);
-  };
+  }, [todoList]);
 
-  const deleteTodoListHandler = (index) => {
+  const deleteTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
-  };
+  }, [todoList]);
 
-  const changeTodoListHandler = (index) => {
+  const changeTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
     newTodoList.splice(index, 1, { text, done });
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
-  };
+  }, [todoList]);
 
   useEffect(() => {
     initTodoList();
