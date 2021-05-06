@@ -91,7 +91,7 @@ const TodoBox = () => {
             </div>
           )}
 
-          {todoList.length === 0 || todoList.length - todoList.filter((todo) => { return todo.done }).length === 0 && (
+          {todoList.length > 0 && todoList.filter((todo) => { return !todo.done }).length === 0 && (
             <div className="mt-3 text-center">
               <small className="text-secondary">There are no unfinished todo&apos;s.</small>
             </div>
