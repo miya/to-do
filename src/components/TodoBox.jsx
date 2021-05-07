@@ -32,9 +32,9 @@ const TodoBox = () => {
     localStorage.setItem('todoList', [localItem]);
   };
 
-  const inputTodoHandler = (event) => {
+  const inputTodoHandler = useCallback((event) => {
     setTodo(event.target.value);
-  };
+  }, [setTodo]);
 
   const addTodoListHandler = useCallback(() => {
     const newTodoList = [...todoList];
@@ -45,7 +45,7 @@ const TodoBox = () => {
     setTodoList(newTodoList);
     setTodo('');
     updateLocalStorage(newTodoList);
-  }, [todoList]);
+  }, [todo, todoList]);
 
   const deleteTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
