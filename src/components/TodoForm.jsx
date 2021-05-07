@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const TodoForm = (props) => {
+const TodoForm = React.memo((props) => {
 
   const { todo, inputTodoHandler, addTodoListHandler } = props;
 
@@ -25,7 +25,7 @@ const TodoForm = (props) => {
       </InputGroup>
     </>
   );
-};
+});
 
 TodoForm.propTypes = {
   todo: PropTypes.string,

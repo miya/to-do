@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
-const TodoList = (props) => {
+const TodoList = React.memo((props) => {
   const { todoList, deleteTodoListHandler, changeTodoListHandler } = props;
 
   return (
@@ -24,7 +24,7 @@ const TodoList = (props) => {
       </ListGroup>
     </>
   );
-};
+});
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
