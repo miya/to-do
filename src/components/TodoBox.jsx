@@ -13,14 +13,9 @@ const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
   const initTodoList = () => {
-    const defaultTodoList = [
-      { id: uuidv4(), text: 'task-1', done: false },
-      { id: uuidv4(), text: 'task-2', done: false },
-      { id: uuidv4(), text: 'task-3', done: false },
-      { id: uuidv4(), text: 'task-4', done: false },
-    ];
     const localItem = JSON.parse(localStorage.getItem('todoList'));
     if (!localItem) {
+      const defaultTodoList = [...Array(4).keys()].map((i) => { return { id: uuidv4(), text: `task-${++i}`, done: false } });
       setTodoList(defaultTodoList);
     }
     else {
