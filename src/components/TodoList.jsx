@@ -12,8 +12,7 @@ const TodoList = React.memo((props) => {
         {todoList.map((todo, index) => {
           return (
             <TodoItem
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
+              key={todo.id}
               todo={todo}
               index={index}
               deleteTodoListHandler={deleteTodoListHandler}
