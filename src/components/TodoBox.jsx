@@ -58,9 +58,10 @@ const TodoBox = () => {
 
   const changeTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
+    const id = newTodoList[index].id;
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { text, done });
+    newTodoList.splice(index, 1, { id, text, done });
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
   }, [todoList]);
