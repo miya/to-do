@@ -1,5 +1,6 @@
 import { React, useState, useEffect, useCallback } from 'react';
 import { Card } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
@@ -13,10 +14,10 @@ const TodoBox = () => {
 
   const initTodoList = () => {
     const defaultTodoList = [
-      { text: 'task-1', done: false },
-      { text: 'task-2', done: false },
-      { text: 'task-3', done: false },
-      { text: 'task-4', done: false },
+      { id: uuidv4(), text: 'task-1', done: false },
+      { id: uuidv4(), text: 'task-2', done: false },
+      { id: uuidv4(), text: 'task-3', done: false },
+      { id: uuidv4(), text: 'task-4', done: false },
     ];
     const localItem = JSON.parse(localStorage.getItem('todoList'));
     if (!localItem) {
@@ -39,6 +40,7 @@ const TodoBox = () => {
   const addTodoListHandler = useCallback(() => {
     const newTodoList = [...todoList];
     newTodoList.push({
+      id: uuidv4(),
       text: todo,
       done: false,
     });
