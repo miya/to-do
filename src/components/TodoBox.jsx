@@ -12,6 +12,7 @@ const TodoBox = () => {
   const initTodoList = () => {
     const localItem = JSON.parse(localStorage.getItem('todoList'));
     if (!localItem) {
+      // eslint-disable-next-line no-param-reassign
       const defaultTodoList = [...Array(4).keys()].map((i) => { return { id: uuidv4(), text: `task-${++i}`, done: false } });
       setTodoList(defaultTodoList);
     }
