@@ -4,9 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
-// eslint-disable-next-line no-unused-vars
-import TodoProgressBar from './TodoProgressBar';
-
 const TodoBox = () => {
   const [todo, setTodo] = useState('');
 
