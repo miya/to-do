@@ -1,5 +1,6 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useCallback } from 'react';
 import { Card } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
@@ -9,14 +10,10 @@ const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
   const initTodoList = () => {
-    const defaultTodoList = [
-      { text: 'task-1', done: false },
-      { text: 'task-2', done: false },
-      { text: 'task-3', done: false },
-      { text: 'task-4', done: false },
-    ];
     const localItem = JSON.parse(localStorage.getItem('todoList'));
     if (!localItem) {
+      // eslint-disable-next-line no-param-reassign
+      const defaultTodoList = [...Array(4).keys()].map((i) => { return { id: uuidv4(), text: `task-${++i}`, done: false } });
       setTodoList(defaultTodoList);
     }
     else {
@@ -29,36 +26,38 @@ const TodoBox = () => {
     localStorage.setItem('todoList', [localItem]);
   };
 
-  const inputTodoHandler = (event) => {
+  const inputTodoHandler = useCallback((event) => {
     setTodo(event.target.value);
-  };
+  }, [setTodo]);
 
-  const addTodoListHandler = () => {
+  const addTodoListHandler = useCallback(() => {
     const newTodoList = [...todoList];
     newTodoList.push({
+      id: uuidv4(),
       text: todo,
       done: false,
     });
     setTodoList(newTodoList);
     setTodo('');
     updateLocalStorage(newTodoList);
-  };
+  }, [todo, todoList]);
 
-  const deleteTodoListHandler = (index) => {
+  const deleteTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
-  };
+  }, [todoList]);
 
-  const changeTodoListHandler = (index) => {
+  const changeTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
+    const id = newTodoList[index].id;
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { text, done });
+    newTodoList.splice(index, 1, { id, text, done });
     setTodoList(newTodoList);
     updateLocalStorage(newTodoList);
-  };
+  }, [todoList]);
 
   useEffect(() => {
     initTodoList();
