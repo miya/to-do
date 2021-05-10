@@ -3,9 +3,6 @@ import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
-// eslint-disable-next-line no-unused-vars
-import TodoProgressBar from './TodoProgressBar';
-
 const TodoBox = () => {
   const [todo, setTodo] = useState('');
 
