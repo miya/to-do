@@ -13,7 +13,7 @@ const TodoForm = React.memo((props) => {
       <InputGroup>
         <FormControl
           type="text"
-          placeholder="add Todo"
+          placeholder="What needs to be done?"
           value={todo}
           onChange={e => inputTodoHandler(e)}
         />
