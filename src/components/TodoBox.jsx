@@ -67,14 +67,12 @@ const TodoBox = () => {
     <>
       <Card className="mx-3 mt-3">
         <Card.Body>
-          {/* TodoFormComponent */}
           <TodoForm
             todo={todo}
             inputTodoHandler={inputTodoHandler}
             addTodoListHandler={addTodoListHandler}
           />
 
-          {/* TodoListComponent */}
           <TodoList
             todoList={todoList}
             deleteTodoListHandler={deleteTodoListHandler}
