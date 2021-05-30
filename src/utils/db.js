@@ -1,10 +1,12 @@
-const dbName = 'todo';
-const version = 1;
+import Dexie from 'dexie';
 
-const openReq = indexedDB.open(dbName, version);
+const dbName = 'todoList';
+const dbVersion = 1;
 
-openReq.onsuccess = () => {
-  console.log('ok');
-};
+const db = new Dexie(dbName);
 
-export default dbName;
+db.version(dbVersion).stores({
+  todoList: 'id, text, done',
+});
+
+export default db;
