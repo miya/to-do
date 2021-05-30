@@ -9,21 +9,19 @@ const TodoForm = React.memo((props) => {
   const { todo, inputTodoHandler, addTodoListHandler } = props;
 
   return (
-    <>
-      <InputGroup>
-        <FormControl
-          type="text"
-          placeholder="What needs to be done?"
-          value={todo}
-          onChange={e => inputTodoHandler(e)}
-        />
-        <InputGroup.Append>
-          <Button variant="primary" disabled={!todo} onClick={addTodoListHandler}>
-            <FontAwesomeIcon icon={faPlus} />
-          </Button>
-        </InputGroup.Append>
-      </InputGroup>
-    </>
+    <InputGroup>
+      <FormControl
+        type="text"
+        placeholder="What needs to be done?"
+        value={todo}
+        onChange={e => inputTodoHandler(e)}
+      />
+      <InputGroup.Append>
+        <Button variant="primary" disabled={!todo} onClick={addTodoListHandler}>
+          <FontAwesomeIcon icon={faPlus} />
+        </Button>
+      </InputGroup.Append>
+    </InputGroup>
   );
 });
 

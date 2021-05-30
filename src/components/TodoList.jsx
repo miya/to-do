@@ -7,21 +7,19 @@ const TodoList = React.memo((props) => {
   const { todoList, deleteTodoListHandler, changeTodoListHandler } = props;
 
   return (
-    <>
-      <ListGroup className={todoList.length === 0 ? true : 'mt-3'}>
-        {todoList.map((todo, index) => {
-          return (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              index={index}
-              deleteTodoListHandler={deleteTodoListHandler}
-              changeTodoListHandler={changeTodoListHandler}
-            />
-          );
-        })}
-      </ListGroup>
-    </>
+    <ListGroup className={todoList.length === 0 ? true : 'mt-3'}>
+      {todoList.map((todo, index) => {
+        return (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            index={index}
+            deleteTodoListHandler={deleteTodoListHandler}
+            changeTodoListHandler={changeTodoListHandler}
+          />
+        );
+      })}
+    </ListGroup>
   );
 });
 

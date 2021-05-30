@@ -8,29 +8,27 @@ const TodoItem = (props) => {
   const { todo, index, deleteTodoListHandler, changeTodoListHandler } = props;
 
   return (
-    <>
-      <ListGroup.Item variant={todo.done && 'success'}>
-        <div>
+    <ListGroup.Item variant={todo.done && 'success'}>
+      <div>
 
-          {/* checkbox */}
-          <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => changeTodoListHandler(index)}></input>
+        {/* checkbox */}
+        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => changeTodoListHandler(index)}></input>
 
-          {/* todo */}
-          {todo.done && (
-            <strike>{todo.text}</strike>
-          )}
-          {!todo.done && (
-            <>{todo.text}</>
-          )}
+        {/* todo */}
+        {todo.done && (
+          <strike>{todo.text}</strike>
+        )}
+        {!todo.done && (
+          <>{todo.text}</>
+        )}
 
-          {/* delete button */}
-          <button type="button" className="delete-btn" onClick={() => deleteTodoListHandler(index)}>
-            <FontAwesomeIcon icon={faTrash} color="#cccccc" />
-          </button>
+        {/* delete button */}
+        <button type="button" className="delete-btn" onClick={() => deleteTodoListHandler(index)}>
+          <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+        </button>
 
-        </div>
-      </ListGroup.Item>
-    </>
+      </div>
+    </ListGroup.Item>
   );
 };
 
