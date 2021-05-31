@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import db from '../utils/db';
 
 const TodoItem = (props) => {
@@ -42,6 +42,11 @@ const TodoItem = (props) => {
         {/* delete button */}
         <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
           <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+        </button>
+
+        {/* edit button */}
+        <button type="button" className="item-update-btn">
+          <FontAwesomeIcon icon={faEdit} color="#cccccc" />
         </button>
 
       </div>
