@@ -32,7 +32,7 @@ const TodoItem = (props) => {
         <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
 
         {edit && (
-          <FormControl className="mr-2" placeholder="edit todo"/>
+          <FormControl className="mr-2" defaultValue={todo.text} />
         )}
 
         {(todo.done && !edit) && (
