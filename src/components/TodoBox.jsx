@@ -20,7 +20,6 @@ const TodoBox = () => {
     <Card className="mx-3 mt-3">
       <Card.Body>
         <TodoForm
-
           todoList={todoList}
           setTodoList={setTodoList}
         />
