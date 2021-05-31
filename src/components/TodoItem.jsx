@@ -11,30 +11,30 @@ const TodoItem = (props) => {
   const [editText, setEditText] = useState(todo.text);
   const [edit, setEdit] = useState(false);
 
-  const deleteTodoListHandler = (id, index) => {
+  const deleteTodoListHandler = (index) => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
-    db.todoList.delete(id);
+    db.todoList.delete(todo.id);
   };
 
-  const updateTodoListHandler = (id, index) => {
+  const updateTodoListHandler = (index) => {
     const newTodoList = [...todoList];
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { id, text, done });
+    newTodoList.splice(index, 1, {id: todo.id, text, done});
     setTodoList(newTodoList);
-    db.todoList.update(id, { done });
+    db.todoList.update(todo.id, { done });
   };
 
   const inputEditTextHandler = (event) => {
     setEditText(event.target.value);
   };
 
-  const onEditButtonPushed = (id) => {
+  const onEditButtonPushed = () => {
     if (edit) {
       setEdit(false);
-      db.todoList.update(id, { text: editText });
+      db.todoList.update(todo.id, { text: editText });
     }
     else {
       setEdit(true);
@@ -44,7 +44,7 @@ const TodoItem = (props) => {
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
       <InputGroup className="align-items-center">
-        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
+        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(index)}></input>
 
         {edit && (
           <FormControl className="mr-2" defaultValue={todo.text} onChange={(e) => { inputEditTextHandler(e) }} />
@@ -58,11 +58,11 @@ const TodoItem = (props) => {
         )}
 
         <div className="ml-auto">
-          <button type="button" className="item-update-btn" onClick={() => onEditButtonPushed(todo.id)}>
+          <button type="button" className="item-update-btn" onClick={() => onEditButtonPushed()}>
             <FontAwesomeIcon icon={faEdit} color="#cccccc" />
           </button>
 
-          <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
+          <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(index)}>
             <FontAwesomeIcon icon={faTrash} color="#cccccc" />
           </button>
         </div>
