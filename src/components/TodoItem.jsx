@@ -49,10 +49,20 @@ const TodoItem = (props) => {
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
       <InputGroup className="align-items-center">
-        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoDone()}></input>
+        <input
+          id={index}
+          className="mr-2"
+          type="checkbox"
+          checked={todo.done}
+          onChange={() => updateTodoDone()}
+        />
 
         {edit && (
-          <FormControl className="mr-2" defaultValue={todo.text} onChange={(e) => { inputEditTextHandler(e) }} />
+          <FormControl
+            className="mr-2"
+            efaultValue={todo.text}
+            onChange={(e) => { inputEditTextHandler(e) }}
+          />
         )}
 
         {(todo.done && !edit) && (
