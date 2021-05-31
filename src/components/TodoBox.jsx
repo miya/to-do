@@ -29,11 +29,6 @@ const TodoBox = () => {
     }
   };
 
-  const updateLocalStorage = (item) => {
-    const localItem = JSON.stringify(item);
-    localStorage.setItem('todoList', [localItem]);
-  };
-
   const inputTodoHandler = useCallback((event) => {
     setTodo(event.target.value);
   }, [setTodo]);
