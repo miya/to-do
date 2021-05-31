@@ -38,16 +38,17 @@ const TodoBox = () => {
     setTodo(event.target.value);
   }, [setTodo]);
 
-  const addTodoListHandler = useCallback(() => {
+  const addTodoListHandler = useCallback(async() => {
     const newTodoList = [...todoList];
-    newTodoList.push({
+    const newTodo = {
       id: uuidv4(),
       text: todo,
       done: false,
-    });
+    };
+    newTodoList.push(newTodo);
     setTodoList(newTodoList);
     setTodo('');
-    updateLocalStorage(newTodoList);
+    await db.todoList.add(newTodo);
   }, [todo, todoList]);
 
   const deleteTodoListHandler = useCallback((index) => {
