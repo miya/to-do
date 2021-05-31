@@ -40,7 +40,7 @@ const TodoItem = (props) => {
         )}
 
         {/* delete button */}
-        <button type="button" className="delete-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
+        <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
           <FontAwesomeIcon icon={faTrash} color="#cccccc" />
         </button>
 
