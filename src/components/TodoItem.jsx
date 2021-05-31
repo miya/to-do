@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const TodoItem = (props) => {
-  const { todo, index, deleteTodoListHandler, changeTodoListHandler } = props;
+  const { todo, index, deleteTodoListHandler, updateTodoListHandler } = props;
 
   return (
     <>
@@ -13,7 +13,7 @@ const TodoItem = (props) => {
         <div>
 
           {/* checkbox */}
-          <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => changeTodoListHandler(todo.id, index)}></input>
+          <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
 
           {/* todo */}
           {todo.done && (

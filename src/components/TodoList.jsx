@@ -4,7 +4,7 @@ import { ListGroup } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 const TodoList = React.memo((props) => {
-  const { todoList, deleteTodoListHandler, changeTodoListHandler } = props;
+  const { todoList, deleteTodoListHandler, updateTodoListHandler } = props;
 
   return (
     <>
@@ -16,7 +16,7 @@ const TodoList = React.memo((props) => {
               todo={todo}
               index={index}
               deleteTodoListHandler={deleteTodoListHandler}
-              changeTodoListHandler={changeTodoListHandler}
+              updateTodoListHandler={updateTodoListHandler}
             />
           );
         })}
