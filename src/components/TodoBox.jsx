@@ -58,14 +58,13 @@ const TodoBox = () => {
     db.todoList.delete(id);
   }, [todoList]);
 
-  const updateTodoListHandler = useCallback((index) => {
+  const updateTodoListHandler = useCallback((id, index) => {
     const newTodoList = [...todoList];
-    const id = newTodoList[index].id;
     const text = newTodoList[index].text;
     const done = !newTodoList[index].done;
     newTodoList.splice(index, 1, { id, text, done });
     setTodoList(newTodoList);
-    updateLocalStorage(newTodoList);
+    db.todoList.update(id, { done });
   }, [todoList]);
 
   useEffect(() => {

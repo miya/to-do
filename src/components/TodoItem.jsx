@@ -12,7 +12,7 @@ const TodoItem = (props) => {
       <div>
 
         {/* checkbox */}
-        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(index)}></input>
+        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
 
         {/* todo */}
         {todo.done && (
