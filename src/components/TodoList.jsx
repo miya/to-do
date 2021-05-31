@@ -11,7 +11,7 @@ const TodoList = React.memo((props) => {
       {todoList.map((todo, index) => {
         return (
           <TodoItem
-            key={todo.id}
+            key={todo.id + todo.text}
             todo={todo}
             index={index}
             todoList={todoList}

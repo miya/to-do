@@ -1,50 +1,87 @@
-import React from 'react';
+import { React, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import db from '../utils/db';
 
 const TodoItem = (props) => {
   const { todo, index, todoList, setTodoList } = props;
 
-  const deleteTodoListHandler = (id, index) => {
+  const [editText, setEditText] = useState(todo.text);
+  const [edit, setEdit] = useState(false);
+
+  const deleteTodo = () => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
-    db.todoList.delete(id);
+    db.todoList.delete(todo.id);
   };
 
-  const updateTodoListHandler = (id, index) => {
+  const updateTodoDone = () => {
     const newTodoList = [...todoList];
-    const text = newTodoList[index].text;
-    const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { id, text, done });
+    newTodoList.splice(index, 1, { id: todo.id, text: todo.text, done: !todo.done });
     setTodoList(newTodoList);
-    db.todoList.update(id, { done });
+    db.todoList.update(todo.id, { done: !todo.done });
+  };
+
+  const updateTodoText = () => {
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1, { id: todo.id, text: editText, done: todo.done });
+    setTodoList(newTodoList);
+    db.todoList.update(todo.id, { text: editText });
+  };
+
+  const inputEditTextHandler = (event) => {
+    setEditText(event.target.value);
+  };
+
+  const onEditButtonPushed = () => {
+    if (edit) {
+      updateTodoText();
+      setEdit(false);
+    }
+    else {
+      setEdit(true);
+    }
   };
 
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
-      <div>
+      <InputGroup className="align-items-center">
+        <input
+          id={index}
+          className="mr-2"
+          type="checkbox"
+          checked={todo.done}
+          onChange={() => updateTodoDone()}
+        />
 
-        {/* checkbox */}
-        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
+        {edit && (
+          <FormControl
+            className="mr-2"
+            defaultValue={editText}
+            onChange={(e) => { inputEditTextHandler(e) }}
+          />
+        )}
 
-        {/* todo */}
-        {todo.done && (
+        {(todo.done && !edit) && (
           <strike>{todo.text}</strike>
         )}
-        {!todo.done && (
+        {(!todo.done && !edit) && (
           <>{todo.text}</>
         )}
 
-        {/* delete button */}
-        <button type="button" className="delete-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
-          <FontAwesomeIcon icon={faTrash} color="#cccccc" />
-        </button>
+        <div className="ml-auto">
+          <button type="button" className="item-update-btn" onClick={() => onEditButtonPushed()}>
+            <FontAwesomeIcon icon={faEdit} color="#cccccc" />
+          </button>
 
-      </div>
+          <button type="button" className="item-update-btn" onClick={() => deleteTodo()}>
+            <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+          </button>
+        </div>
+      </InputGroup>
     </ListGroup.Item>
   );
 };
