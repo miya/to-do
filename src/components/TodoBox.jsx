@@ -1,63 +1,16 @@
-import { React, useState, useEffect, useCallback } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import db from '../utils/db';
 
 const TodoBox = () => {
-  const [todo, setTodo] = useState('');
-
   const [todoList, setTodoList] = useState([]);
 
-  const initTodoList = () => {
-    const localItem = JSON.parse(localStorage.getItem('todoList'));
-    if (!localItem) {
-      // eslint-disable-next-line no-param-reassign
-      const defaultTodoList = [...Array(4).keys()].map((i) => { return { id: uuidv4(), text: `task-${++i}`, done: false } });
-      setTodoList(defaultTodoList);
-    }
-    else {
-      setTodoList(localItem);
-    }
+  const initTodoList = async() => {
+    const todoList = await db.todoList.toArray();
+    setTodoList(todoList);
   };
-
-  const updateLocalStorage = (item) => {
-    const localItem = JSON.stringify(item);
-    localStorage.setItem('todoList', [localItem]);
-  };
-
-  const inputTodoHandler = useCallback((event) => {
-    setTodo(event.target.value);
-  }, [setTodo]);
-
-  const addTodoListHandler = useCallback(() => {
-    const newTodoList = [...todoList];
-    newTodoList.push({
-      id: uuidv4(),
-      text: todo,
-      done: false,
-    });
-    setTodoList(newTodoList);
-    setTodo('');
-    updateLocalStorage(newTodoList);
-  }, [todo, todoList]);
-
-  const deleteTodoListHandler = useCallback((index) => {
-    const newTodoList = [...todoList];
-    newTodoList.splice(index, 1);
-    setTodoList(newTodoList);
-    updateLocalStorage(newTodoList);
-  }, [todoList]);
-
-  const changeTodoListHandler = useCallback((index) => {
-    const newTodoList = [...todoList];
-    const id = newTodoList[index].id;
-    const text = newTodoList[index].text;
-    const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { id, text, done });
-    setTodoList(newTodoList);
-    updateLocalStorage(newTodoList);
-  }, [todoList]);
 
   useEffect(() => {
     initTodoList();
@@ -67,15 +20,13 @@ const TodoBox = () => {
     <Card className="mx-3 mt-3">
       <Card.Body>
         <TodoForm
-          todo={todo}
-          inputTodoHandler={inputTodoHandler}
-          addTodoListHandler={addTodoListHandler}
+          todoList={todoList}
+          setTodoList={setTodoList}
         />
 
         <TodoList
           todoList={todoList}
-          deleteTodoListHandler={deleteTodoListHandler}
-          changeTodoListHandler={changeTodoListHandler}
+          setTodoList={setTodoList}
         />
 
         {todoList.length === 0 && (
