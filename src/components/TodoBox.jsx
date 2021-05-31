@@ -6,8 +6,6 @@ import TodoList from './TodoList';
 import db from '../utils/db';
 
 const TodoBox = () => {
-  const [todo, setTodo] = useState('');
-
   const [todoList, setTodoList] = useState([]);
 
   const initTodoList = async() => {
@@ -29,23 +27,6 @@ const TodoBox = () => {
     }
   };
 
-  const inputTodoHandler = useCallback((event) => {
-    setTodo(event.target.value);
-  }, [setTodo]);
-
-  const addTodoListHandler = useCallback(async() => {
-    const newTodoList = [...todoList];
-    const newTodo = {
-      id: uuidv4(),
-      text: todo,
-      done: false,
-    };
-    newTodoList.push(newTodo);
-    setTodoList(newTodoList);
-    setTodo('');
-    await db.todoList.add(newTodo);
-  }, [todo, todoList]);
-
   useEffect(() => {
     initTodoList();
   }, []);
@@ -54,9 +35,8 @@ const TodoBox = () => {
     <Card className="mx-3 mt-3">
       <Card.Body>
         <TodoForm
-          todo={todo}
-          inputTodoHandler={inputTodoHandler}
-          addTodoListHandler={addTodoListHandler}
+          todoList={todoList}
+          setTodoList={setTodoList}
         />
 
         <TodoList
