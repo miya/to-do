@@ -3,21 +3,29 @@ import { Card } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import db from '../utils/db';
 
 const TodoBox = () => {
   const [todo, setTodo] = useState('');
 
   const [todoList, setTodoList] = useState([]);
 
-  const initTodoList = () => {
-    const localItem = JSON.parse(localStorage.getItem('todoList'));
-    if (!localItem) {
-      // eslint-disable-next-line no-param-reassign
-      const defaultTodoList = [...Array(4).keys()].map((i) => { return { id: uuidv4(), text: `task-${++i}`, done: false } });
+  const initTodoList = async() => {
+    const todoList = await db.todoList.toArray();
+    if (todoList.length === 0) {
+      const defaultTodoList = [];
+      for (let i = 0; i < 3; i++) {
+        const defaultTodo = {
+          id: uuidv4(),
+          text: `task-${i + 1}`,
+          done: false,
+        };
+        defaultTodoList.push(defaultTodo);
+      }
       setTodoList(defaultTodoList);
     }
     else {
-      setTodoList(localItem);
+      setTodoList(todoList);
     }
   };
 
@@ -30,16 +38,17 @@ const TodoBox = () => {
     setTodo(event.target.value);
   }, [setTodo]);
 
-  const addTodoListHandler = useCallback(() => {
+  const addTodoListHandler = useCallback(async() => {
     const newTodoList = [...todoList];
-    newTodoList.push({
+    const newTodo = {
       id: uuidv4(),
       text: todo,
       done: false,
-    });
+    };
+    newTodoList.push(newTodo);
     setTodoList(newTodoList);
     setTodo('');
-    updateLocalStorage(newTodoList);
+    await db.todoList.add(newTodo);
   }, [todo, todoList]);
 
   const deleteTodoListHandler = useCallback((index) => {
