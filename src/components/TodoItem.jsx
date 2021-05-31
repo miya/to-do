@@ -60,7 +60,7 @@ const TodoItem = (props) => {
         {edit && (
           <FormControl
             className="mr-2"
-            defaultValue={todo.text}
+            defaultValue={editText}
             onChange={(e) => { inputEditTextHandler(e) }}
           />
         )}
