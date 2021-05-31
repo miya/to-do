@@ -58,7 +58,7 @@ const TodoBox = () => {
     db.todoList.delete(id);
   }, [todoList]);
 
-  const changeTodoListHandler = useCallback((index) => {
+  const updateTodoListHandler = useCallback((index) => {
     const newTodoList = [...todoList];
     const id = newTodoList[index].id;
     const text = newTodoList[index].text;
@@ -84,7 +84,7 @@ const TodoBox = () => {
         <TodoList
           todoList={todoList}
           deleteTodoListHandler={deleteTodoListHandler}
-          changeTodoListHandler={changeTodoListHandler}
+          updateTodoListHandler={updateTodoListHandler}
         />
 
         {todoList.length === 0 && (

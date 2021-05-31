@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const TodoItem = (props) => {
-  const { todo, index, deleteTodoListHandler, changeTodoListHandler } = props;
+  const { todo, index, deleteTodoListHandler, updateTodoListHandler } = props;
 
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
       <div>
 
         {/* checkbox */}
-        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => changeTodoListHandler(index)}></input>
+        <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(index)}></input>
 
         {/* todo */}
         {todo.done && (
