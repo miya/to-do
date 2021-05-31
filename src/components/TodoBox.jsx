@@ -9,20 +9,7 @@ const TodoBox = () => {
 
   const initTodoList = async() => {
     const todoList = await db.todoList.toArray();
-    if (todoList.length === 0) {
-      const defaultTodoList = [];
-      for (let i = 0; i < 3; i++) {
-        const defaultTodo = {
-          text: `task-${i + 1}`,
-          done: false,
-        };
-        defaultTodoList.push(defaultTodo);
-      }
-      setTodoList(defaultTodoList);
-    }
-    else {
-      setTodoList(todoList);
-    }
+    setTodoList(todoList);
   };
 
   useEffect(() => {
@@ -33,6 +20,7 @@ const TodoBox = () => {
     <Card className="mx-3 mt-3">
       <Card.Body>
         <TodoForm
+
           todoList={todoList}
           setTodoList={setTodoList}
         />
