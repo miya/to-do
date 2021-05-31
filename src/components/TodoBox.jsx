@@ -1,6 +1,5 @@
 import { React, useState, useEffect, useCallback } from 'react';
 import { Card } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import db from '../utils/db';
@@ -14,7 +13,6 @@ const TodoBox = () => {
       const defaultTodoList = [];
       for (let i = 0; i < 3; i++) {
         const defaultTodo = {
-          id: uuidv4(),
           text: `task-${i + 1}`,
           done: false,
         };
