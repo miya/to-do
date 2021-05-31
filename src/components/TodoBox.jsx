@@ -51,11 +51,11 @@ const TodoBox = () => {
     await db.todoList.add(newTodo);
   }, [todo, todoList]);
 
-  const deleteTodoListHandler = useCallback((index) => {
+  const deleteTodoListHandler = useCallback((id, index) => {
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
-    updateLocalStorage(newTodoList);
+    db.todoList.delete(id);
   }, [todoList]);
 
   const changeTodoListHandler = useCallback((index) => {
