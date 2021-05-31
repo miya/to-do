@@ -26,7 +26,7 @@ const TodoList = React.memo((props) => {
 TodoList.propTypes = {
   todoList: PropTypes.array,
   deleteTodoListHandler: PropTypes.func,
-  changeTodoListHandler: PropTypes.func,
+  updateTodoListHandler: PropTypes.func,
 };
 
 export default TodoList;

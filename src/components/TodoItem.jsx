@@ -36,7 +36,7 @@ TodoItem.propTypes = {
   todo: PropTypes.object,
   index: PropTypes.number,
   deleteTodoListHandler: PropTypes.func,
-  changeTodoListHandler: PropTypes.func,
+  updateTodoListHandler: PropTypes.func,
 };
 
 export default TodoItem;
