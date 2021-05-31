@@ -8,6 +8,7 @@ import db from '../utils/db';
 const TodoItem = (props) => {
   const { todo, index, todoList, setTodoList } = props;
 
+  const [editText, setEditText] = useState(todo.text);
   const [edit, setEdit] = useState(false);
 
   const deleteTodoListHandler = (id, index) => {
@@ -26,13 +27,27 @@ const TodoItem = (props) => {
     db.todoList.update(id, { done });
   };
 
+  const inputEditTextHandler = (event) => {
+    setEditText(event.target.value);
+  };
+
+  const onEditButtonPushed = (id) => {
+    if (edit) {
+      setEdit(false);
+      db.todoList.update(id, { text: editText });
+    }
+    else {
+      setEdit(true);
+    }
+  };
+
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
       <InputGroup className="align-items-center">
         <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
 
         {edit && (
-          <FormControl className="mr-2" defaultValue={todo.text} />
+          <FormControl className="mr-2" defaultValue={todo.text} onChange={(e) => { inputEditTextHandler(e) }} />
         )}
 
         {(todo.done && !edit) && (
@@ -43,7 +58,7 @@ const TodoItem = (props) => {
         )}
 
         <div className="ml-auto">
-          <button type="button" className="item-update-btn" onClick={() => setEdit(!edit)}>
+          <button type="button" className="item-update-btn" onClick={() => onEditButtonPushed(todo.id)}>
             <FontAwesomeIcon icon={faEdit} color="#cccccc" />
           </button>
 
