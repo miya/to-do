@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, InputGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import db from '../utils/db';
@@ -26,30 +26,28 @@ const TodoItem = (props) => {
 
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
-      <div>
-
-        {/* checkbox */}
+      <InputGroup className="align-items-center">
         <input id={index} type="checkbox" className="mr-2" checked={todo.done} onChange={() => updateTodoListHandler(todo.id, index)}></input>
 
-        {/* todo */}
+        {/* <FormControl className="mr-2" placeholder="edit todo"/> */}
+
         {todo.done && (
-          <strike>{todo.text}</strike>
+        <strike>{todo.text}</strike>
         )}
         {!todo.done && (
           <>{todo.text}</>
         )}
 
-        {/* delete button */}
-        <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
-          <FontAwesomeIcon icon={faTrash} color="#cccccc" />
-        </button>
+        <div className="ml-auto">
+          <button type="button" className="item-update-btn">
+            <FontAwesomeIcon icon={faEdit} color="#cccccc" />
+          </button>
 
-        {/* edit button */}
-        <button type="button" className="item-update-btn">
-          <FontAwesomeIcon icon={faEdit} color="#cccccc" />
-        </button>
-
-      </div>
+          <button type="button" className="item-update-btn" onClick={() => deleteTodoListHandler(todo.id, index)}>
+            <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+          </button>
+        </div>
+      </InputGroup>
     </ListGroup.Item>
   );
 };
