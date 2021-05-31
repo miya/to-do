@@ -46,22 +46,6 @@ const TodoBox = () => {
     await db.todoList.add(newTodo);
   }, [todo, todoList]);
 
-  const deleteTodoListHandler = useCallback((id, index) => {
-    const newTodoList = [...todoList];
-    newTodoList.splice(index, 1);
-    setTodoList(newTodoList);
-    db.todoList.delete(id);
-  }, [todoList]);
-
-  const updateTodoListHandler = useCallback((id, index) => {
-    const newTodoList = [...todoList];
-    const text = newTodoList[index].text;
-    const done = !newTodoList[index].done;
-    newTodoList.splice(index, 1, { id, text, done });
-    setTodoList(newTodoList);
-    db.todoList.update(id, { done });
-  }, [todoList]);
-
   useEffect(() => {
     initTodoList();
   }, []);
@@ -77,8 +61,7 @@ const TodoBox = () => {
 
         <TodoList
           todoList={todoList}
-          deleteTodoListHandler={deleteTodoListHandler}
-          updateTodoListHandler={updateTodoListHandler}
+          setTodoList={setTodoList}
         />
 
         {todoList.length === 0 && (

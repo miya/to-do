@@ -3,9 +3,26 @@ import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import db from '../utils/db';
 
 const TodoItem = (props) => {
-  const { todo, index, deleteTodoListHandler, updateTodoListHandler } = props;
+  const { todo, index, todoList, setTodoList } = props;
+
+  const deleteTodoListHandler = (id, index) => {
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+    setTodoList(newTodoList);
+    db.todoList.delete(id);
+  };
+
+  const updateTodoListHandler = (id, index) => {
+    const newTodoList = [...todoList];
+    const text = newTodoList[index].text;
+    const done = !newTodoList[index].done;
+    newTodoList.splice(index, 1, { id, text, done });
+    setTodoList(newTodoList);
+    db.todoList.update(id, { done });
+  };
 
   return (
     <ListGroup.Item variant={todo.done && 'success'}>
@@ -35,8 +52,8 @@ const TodoItem = (props) => {
 TodoItem.propTypes = {
   todo: PropTypes.object,
   index: PropTypes.number,
-  deleteTodoListHandler: PropTypes.func,
-  updateTodoListHandler: PropTypes.func,
+  todoList: PropTypes.array,
+  setTodoList: PropTypes.func,
 };
 
 export default TodoItem;

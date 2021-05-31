@@ -4,7 +4,7 @@ import { ListGroup } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 const TodoList = React.memo((props) => {
-  const { todoList, deleteTodoListHandler, updateTodoListHandler } = props;
+  const { todoList, setTodoList } = props;
 
   return (
     <ListGroup className={todoList.length === 0 ? true : 'mt-3'}>
@@ -14,8 +14,8 @@ const TodoList = React.memo((props) => {
             key={todo.id}
             todo={todo}
             index={index}
-            deleteTodoListHandler={deleteTodoListHandler}
-            updateTodoListHandler={updateTodoListHandler}
+            todoList={todoList}
+            setTodoList={setTodoList}
           />
         );
       })}
@@ -25,8 +25,7 @@ const TodoList = React.memo((props) => {
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
-  deleteTodoListHandler: PropTypes.func,
-  updateTodoListHandler: PropTypes.func,
+  setTodoList: PropTypes.func,
 };
 
 export default TodoList;
