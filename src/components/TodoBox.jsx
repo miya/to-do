@@ -8,8 +8,8 @@ const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
   const initTodoList = async() => {
-    const todoList = await db.todoList.toArray();
-    setTodoList(todoList);
+    const indexedTodoList = await db.todoList.toArray();
+    setTodoList(indexedTodoList);
   };
 
   useEffect(() => {
