@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import TodoItemList from './TodoItemList';
 import db from '../utils/db';
 
 const TodoBox = () => {
@@ -24,7 +24,7 @@ const TodoBox = () => {
           setTodoList={setTodoList}
         />
 
-        <TodoList
+        <TodoItemList
           todoList={todoList}
           setTodoList={setTodoList}
         />
