@@ -9,21 +9,21 @@ const TodoForm = (props) => {
 
   const { todoList, setTodoList } = props;
 
-  const [todo, setTodo] = useState('');
+  const [todoText, setTodoText] = useState('');
 
-  const inputTodoHandler = (event) => {
-    setTodo(event.target.value);
+  const inputTodoTextHandler = (event) => {
+    setTodoText(event.target.value);
   };
 
   const addTodo = async() => {
     const newTodoList = [...todoList];
     const newTodo = {
-      text: todo,
+      text: todoText,
       done: false,
     };
     newTodoList.push(newTodo);
     setTodoList(newTodoList);
-    setTodo('');
+    setTodoText('');
     await db.todoList.add(newTodo);
   };
 
@@ -32,11 +32,11 @@ const TodoForm = (props) => {
       <FormControl
         type="text"
         placeholder="What needs to be done?"
-        value={todo}
-        onChange={e => inputTodoHandler(e)}
+        value={todoText}
+        onChange={e => inputTodoTextHandler(e)}
       />
       <InputGroup.Append>
-        <Button variant="primary" disabled={!todo} onClick={addTodo}>
+        <Button variant="primary" disabled={!todoText} onClick={addTodo}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </InputGroup.Append>
