@@ -73,14 +73,14 @@ const TodoItem = (props) => {
         )}
 
         <div className="ml-auto">
-          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Edit Todo</Tooltip>} >
+          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Edit Todo</Tooltip>}>
             {({ ref, ...triggerHandler }) => (
               <button ref={ref} {...triggerHandler} type="button" className="item-update-btn" onClick={() => onEditButtonPushed()}>
                 <FontAwesomeIcon icon={faEdit} color="#cccccc" />
               </button>
             )}
           </OverlayTrigger>
-          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Delete Todo</Tooltip>} >
+          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Delete Todo</Tooltip>}>
             {({ ref, ...triggerHandler }) => (
               <button ref={ref} {...triggerHandler} type="button" className="item-update-btn" onClick={() => deleteTodo()}>
                 <FontAwesomeIcon icon={faTrash} color="#cccccc" />
