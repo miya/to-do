@@ -15,7 +15,7 @@ const TodoForm = (props) => {
     setTodo(event.target.value);
   };
 
-  const addTodoListHandler = async() => {
+  const addTodo = async() => {
     const newTodoList = [...todoList];
     const newTodo = {
       text: todo,
@@ -36,7 +36,7 @@ const TodoForm = (props) => {
         onChange={e => inputTodoHandler(e)}
       />
       <InputGroup.Append>
-        <Button variant="primary" disabled={!todo} onClick={addTodoListHandler}>
+        <Button variant="primary" disabled={!todo} onClick={addTodo}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </InputGroup.Append>
