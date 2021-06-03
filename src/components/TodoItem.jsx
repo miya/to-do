@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup, InputGroup, FormControl } from 'react-bootstrap';
+import { ListGroup, InputGroup, FormControl, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import db from '../utils/db';
@@ -73,13 +73,20 @@ const TodoItem = (props) => {
         )}
 
         <div className="ml-auto">
-          <button type="button" className="item-update-btn" onClick={() => onEditButtonPushed()}>
-            <FontAwesomeIcon icon={faEdit} color="#cccccc" />
-          </button>
-
-          <button type="button" className="item-update-btn" onClick={() => deleteTodo()}>
-            <FontAwesomeIcon icon={faTrash} color="#cccccc" />
-          </button>
+          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Edit Todo</Tooltip>} >
+            {({ ref, ...triggerHandler }) => (
+              <button ref={ref} {...triggerHandler} type="button" className="item-update-btn" onClick={() => onEditButtonPushed()}>
+                <FontAwesomeIcon icon={faEdit} color="#cccccc" />
+              </button>
+            )}
+          </OverlayTrigger>
+          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Delete Todo</Tooltip>} >
+            {({ ref, ...triggerHandler }) => (
+              <button ref={ref} {...triggerHandler} type="button" className="item-update-btn" onClick={() => deleteTodo()}>
+                <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+              </button>
+            )}
+          </OverlayTrigger>
         </div>
       </InputGroup>
     </ListGroup.Item>
