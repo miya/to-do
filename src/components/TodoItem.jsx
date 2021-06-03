@@ -80,10 +80,13 @@ const TodoItem = (props) => {
               </button>
             )}
           </OverlayTrigger>
-
-          {/* <button type="button" className="item-update-btn" onClick={() => deleteTodo()}>
-            <FontAwesomeIcon icon={faTrash} color="#cccccc" />
-          </button> */}
+          <OverlayTrigger placement="top" transition={false} overlay={<Tooltip id="Tooltip">Delete Todo</Tooltip>} >
+            {({ ref, ...triggerHandler }) => (
+              <button ref={ref} {...triggerHandler} type="button" className="item-update-btn" onClick={() => deleteTodo()}>
+                <FontAwesomeIcon icon={faTrash} color="#cccccc" />
+              </button>
+            )}
+          </OverlayTrigger>
         </div>
       </InputGroup>
     </ListGroup.Item>
