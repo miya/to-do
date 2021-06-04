@@ -8,7 +8,7 @@ import db from '../utils/db';
 const TodoItem = (props) => {
   const { todo, index, todoList, setTodoList } = props;
 
-  const [editText, setEditText] = useState(todo.text);
+  const [editTodoText, setEditTodoText] = useState(todo.text);
   const [edit, setEdit] = useState(false);
 
   const deleteTodo = () => {
@@ -27,13 +27,13 @@ const TodoItem = (props) => {
 
   const updateTodoText = () => {
     const newTodoList = [...todoList];
-    newTodoList.splice(index, 1, { id: todo.id, text: editText, done: todo.done });
+    newTodoList.splice(index, 1, { id: todo.id, text: editTodoText, done: todo.done });
     setTodoList(newTodoList);
-    db.todoList.update(todo.id, { text: editText });
+    db.todoList.update(todo.id, { text: editTodoText });
   };
 
-  const inputEditTextHandler = (event) => {
-    setEditText(event.target.value);
+  const inputEditTodoTextHandler = (event) => {
+    setEditTodoText(event.target.value);
   };
 
   const onEditButtonPushed = () => {
@@ -60,8 +60,8 @@ const TodoItem = (props) => {
         {edit && (
           <FormControl
             className="mr-2"
-            defaultValue={editText}
-            onChange={(e) => { inputEditTextHandler(e) }}
+            defaultValue={editTodoText}
+            onChange={(e) => { inputEditTodoTextHandler(e) }}
           />
         )}
 
