@@ -20,6 +20,7 @@ const TodoForm = (props) => {
     const newTodo = {
       text: todoText,
       done: false,
+      created_at: new Date(),
     };
     newTodoList.push(newTodo);
     setTodoList(newTodoList);

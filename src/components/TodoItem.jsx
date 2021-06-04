@@ -20,14 +20,24 @@ const TodoItem = (props) => {
 
   const updateTodoDone = () => {
     const newTodoList = [...todoList];
-    newTodoList.splice(index, 1, { id: todo.id, text: todo.text, done: !todo.done });
+    newTodoList.splice(index, 1, {
+      id: todo.id,
+      text: todo.text,
+      done: !todo.done,
+      created_at: todo.created_at,
+    });
     setTodoList(newTodoList);
     db.todoList.update(todo.id, { done: !todo.done });
   };
 
   const updateTodoText = () => {
     const newTodoList = [...todoList];
-    newTodoList.splice(index, 1, { id: todo.id, text: editTodoText, done: todo.done });
+    newTodoList.splice(index, 1, {
+      id: todo.id,
+      text: editTodoText,
+      done: todo.done,
+      created_at: todo.created_at,
+    });
     setTodoList(newTodoList);
     db.todoList.update(todo.id, { text: editTodoText });
   };
