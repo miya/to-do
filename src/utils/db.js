@@ -6,7 +6,7 @@ const dbVersion = 1;
 const db = new Dexie(dbName);
 
 db.version(dbVersion).stores({
-  todoList: '++id, text, done, update_at',
+  todoList: '++id, text, done, created_at',
 });
 
 export default db;
