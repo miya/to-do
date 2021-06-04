@@ -94,10 +94,10 @@ const TodoItem = (props) => {
 };
 
 TodoItem.propTypes = {
-  todo: PropTypes.object,
-  index: PropTypes.number,
-  todoList: PropTypes.array,
-  setTodoList: PropTypes.func,
+  todo: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  todoList: PropTypes.array.isRequired,
+  setTodoList: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
