@@ -15,12 +15,6 @@ const TodoForm = (props) => {
     setTodoText(event.target.value);
   };
 
-  const enterButtonPressedHandler = (event) => {
-    if (event.key === 'Enter') {
-      addTodo();
-    }
-  };
-
   const addTodo = async() => {
     const newTodoList = [...todoList];
     const newTodo = {
@@ -34,8 +28,14 @@ const TodoForm = (props) => {
     await db.todoList.add(newTodo);
   };
 
+  const enterButtonPressedHandler = (event) => {
+    if (event.key === 'Enter') {
+      addTodo();
+    }
+  };
+
   return (
-    <InputGroup onKeyPress={(event) => { enterButtonPressedHandler(event)} }>
+    <InputGroup onKeyPress={(e) => { enterButtonPressedHandler(e) }}>
       <FormControl
         type="text"
         placeholder="What needs to be done?"
