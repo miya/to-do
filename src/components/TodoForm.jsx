@@ -43,7 +43,7 @@ const TodoForm = (props) => {
         onChange={e => inputTodoTextHandler(e)}
       />
       <InputGroup.Append>
-        <Button variant="primary" disabled={!todoText} onClick={addTodo}>
+        <Button variant="primary" disabled={todoText.length === 0} onClick={addTodo}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </InputGroup.Append>
