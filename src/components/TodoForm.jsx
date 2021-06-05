@@ -29,7 +29,7 @@ const TodoForm = (props) => {
   };
 
   const enterButtonPressedHandler = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && todoText.length > 0) {
       addTodo();
     }
   };
