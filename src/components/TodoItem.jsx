@@ -19,14 +19,12 @@ const TodoItem = (props) => {
     db.todoList.delete(todo.id);
   };
 
-  const updateTodo = (updateContent) => {
-    const key = Object.keys(updateContent)[0];
-    const value = Object.values(updateContent)[0];
+  const updateTodo = (key, value) => {
     const newTodo = newTodoList.find(newTodo => newTodo.id === todo.id);
     newTodo[key] = value;
     newTodoList.splice(index, 1, newTodo);
     setTodoList(newTodoList);
-    db.todoList.update(todo.id, updateContent);
+    db.todoList.update(todo.id, {[key]: value});
   };
 
   const inputEditTodoTextHandler = (event) => {
@@ -35,7 +33,7 @@ const TodoItem = (props) => {
 
   const onEditButtonPushed = () => {
     if (edit) {
-      updateTodo({ text: editTodoText });
+      updateTodo('text', editTodoText);
       setEdit(false);
     }
     else {
@@ -51,7 +49,7 @@ const TodoItem = (props) => {
           className="mr-2"
           type="checkbox"
           checked={todo.done}
-          onChange={() => updateTodo({ done: !todo.done })}
+          onChange={() => updateTodo('done', !todo.done)}
         />
 
         {edit && (
