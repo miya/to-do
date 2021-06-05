@@ -11,7 +11,7 @@ const TodoItem = (props) => {
   const [editTodoText, setEditTodoText] = useState(todo.text);
   const [edit, setEdit] = useState(false);
 
-  const newTodoList = [...todoList]
+  const newTodoList = [...todoList];
 
   const deleteTodo = () => {
     newTodoList.splice(index, 1);
@@ -24,7 +24,7 @@ const TodoItem = (props) => {
     newTodo[key] = value;
     newTodoList.splice(index, 1, newTodo);
     setTodoList(newTodoList);
-    db.todoList.update(todo.id, {[key]: value});
+    db.todoList.update(todo.id, { [key]: value });
   };
 
   const inputEditTodoTextHandler = (event) => {
