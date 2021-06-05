@@ -11,35 +11,22 @@ const TodoItem = (props) => {
   const [editTodoText, setEditTodoText] = useState(todo.text);
   const [edit, setEdit] = useState(false);
 
+  const newTodoList = [...todoList]
+
   const deleteTodo = () => {
-    const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
     db.todoList.delete(todo.id);
   };
 
-  const updateTodoDone = () => {
-    const newTodoList = [...todoList];
-    newTodoList.splice(index, 1, {
-      id: todo.id,
-      text: todo.text,
-      done: !todo.done,
-      created_at: todo.created_at,
-    });
+  const updateTodo = (updateContent) => {
+    const key = Object.keys(updateContent)[0];
+    const value = Object.values(updateContent)[0];
+    const newTodo = newTodoList.find(newTodo => newTodo.id === todo.id);
+    newTodo[key] = value;
+    newTodoList.splice(index, 1, newTodo);
     setTodoList(newTodoList);
-    db.todoList.update(todo.id, { done: !todo.done });
-  };
-
-  const updateTodoText = () => {
-    const newTodoList = [...todoList];
-    newTodoList.splice(index, 1, {
-      id: todo.id,
-      text: editTodoText,
-      done: todo.done,
-      created_at: todo.created_at,
-    });
-    setTodoList(newTodoList);
-    db.todoList.update(todo.id, { text: editTodoText });
+    db.todoList.update(todo.id, updateContent);
   };
 
   const inputEditTodoTextHandler = (event) => {
@@ -48,7 +35,7 @@ const TodoItem = (props) => {
 
   const onEditButtonPushed = () => {
     if (edit) {
-      updateTodoText();
+      updateTodo({ text: editTodoText });
       setEdit(false);
     }
     else {
@@ -64,7 +51,7 @@ const TodoItem = (props) => {
           className="mr-2"
           type="checkbox"
           checked={todo.done}
-          onChange={() => updateTodoDone()}
+          onChange={() => updateTodo({ done: !todo.done })}
         />
 
         {edit && (
