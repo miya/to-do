@@ -1,18 +1,14 @@
 import Dexie from 'dexie';
-
-const dbName = 'todoList';
-const dbVersion = 1;
 export default class DB {
 
-  constructor() {
+  constructor(dbName) {
     this.db = new Dexie(dbName);
-
-    this.db.version(dbVersion).stores({
+    this.db.version(1).stores({
       todoList: '++id, text, done, created_at',
     });
   }
 
-  async getTodoList() {
+  async get() {
     return await this.db.todoList.toArray()
   }
 
