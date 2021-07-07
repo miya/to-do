@@ -2,13 +2,15 @@ import { React, useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import TodoForm from './TodoForm';
 import TodoItemList from './TodoItemList';
-import db from '../utils/db';
+import DB from '../utils/db';
 
 const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
+  const db = new DB('todoList');
+
   const initTodoList = async() => {
-    const indexedTodoList = await db.todoList.toArray();
+    const indexedTodoList = await db.get();
     setTodoList(indexedTodoList);
   };
 
