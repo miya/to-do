@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListGroup, InputGroup, FormControl, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
-import db from '../utils/db';
+import DB from '../utils/db';
 
 const TodoItem = (props) => {
   const { todo, index, todoList, setTodoList } = props;
@@ -13,10 +13,12 @@ const TodoItem = (props) => {
 
   const newTodoList = [...todoList];
 
+  const db = new DB('todoList');
+
   const deleteTodo = () => {
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
-    db.todoList.delete(todo.id);
+    db.delete(todo.id);
   };
 
   const updateTodo = (key, value) => {
@@ -24,7 +26,7 @@ const TodoItem = (props) => {
     newTodo[key] = value;
     newTodoList.splice(index, 1, newTodo);
     setTodoList(newTodoList);
-    db.todoList.update(todo.id, { [key]: value });
+    db.update(todo.id, key, value);
   };
 
   const inputEditTodoTextHandler = (event) => {
