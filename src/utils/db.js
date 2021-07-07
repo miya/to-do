@@ -10,6 +10,7 @@ export default class DB {
   }
 
   async get() {
+    // eslint-disable-next-line no-return-await
     return await this.db.todoList.toArray();
   }
 
