@@ -10,7 +10,7 @@ export default class DB {
   }
 
   async get() {
-    return await this.db.todoList.toArray()
+    return await this.db.todoList.toArray();
   }
 
   async add(value) {
@@ -23,5 +23,6 @@ export default class DB {
 
   delete(id) {
     this.db.todoList.delete(id);
-  };
-};
+  }
+
+}

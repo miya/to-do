@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from './components/Header';
 import TodoBox from './components/TodoBox';
 import Footer from './components/Footer';
@@ -10,7 +11,7 @@ const App = () => {
       <TodoBox />
       <Footer />
     </>
-  )
+  );
 };
 
 export default App;
