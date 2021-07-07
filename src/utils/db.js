@@ -1,4 +1,5 @@
 import Dexie from 'dexie';
+
 export default class DB {
 
   constructor(dbName) {
