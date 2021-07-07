@@ -13,8 +13,7 @@ const config = {
 };
 
 if (process.env.DISABLE_ESLINT) {
-  config.ignorePatterns = ['src/components/**'];
+  config.ignorePatterns = ['src/components/**', 'src/utils/**','src/**'];
 };
 
 module.exports = config;
-
