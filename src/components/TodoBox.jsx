@@ -7,11 +7,13 @@ import DB from '../utils/db';
 const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
-  useEffect(async() => {
-    // Initialize todoList
-    const db = new DB('todoList');
-    const indexedTodoList = await db.get();
-    setTodoList(indexedTodoList);
+  useEffect(() => {
+    const initTodoList = async() => {
+      const db = new DB('todoList');
+      const indexedTodoList = await db.get();
+      setTodoList(indexedTodoList);
+    }
+    initTodoList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
