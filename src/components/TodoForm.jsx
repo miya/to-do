@@ -11,8 +11,6 @@ const TodoForm = (props) => {
 
   const [todoText, setTodoText] = useState('');
 
-  const db = new DB('todoList');
-
   const inputTodoTextHandler = (event) => {
     setTodoText(event.target.value);
   };
@@ -27,6 +25,7 @@ const TodoForm = (props) => {
     newTodoList.push(newTodo);
     setTodoList(newTodoList);
     setTodoText('');
+    const db = new DB('todoList');
     await db.add(newTodo);
   };
 

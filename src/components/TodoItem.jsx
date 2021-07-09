@@ -13,11 +13,10 @@ const TodoItem = (props) => {
 
   const newTodoList = [...todoList];
 
-  const db = new DB('todoList');
-
   const deleteTodo = () => {
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
+    const db = new DB('todoList');
     db.delete(todo.id);
   };
 
@@ -26,6 +25,7 @@ const TodoItem = (props) => {
     newTodo[key] = value;
     newTodoList.splice(index, 1, newTodo);
     setTodoList(newTodoList);
+    const db = new DB('todoList');
     db.update(todo.id, key, value);
   };
 

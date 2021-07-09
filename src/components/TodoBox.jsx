@@ -7,10 +7,9 @@ import DB from '../utils/db';
 const TodoBox = () => {
   const [todoList, setTodoList] = useState([]);
 
-  const db = new DB('todoList');
-
   useEffect(async() => {
     // Initialize todoList
+    const db = new DB('todoList');
     const indexedTodoList = await db.get();
     setTodoList(indexedTodoList);
   }, []);
