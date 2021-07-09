@@ -9,13 +9,10 @@ const TodoBox = () => {
 
   const db = new DB('todoList');
 
-  const initTodoList = async() => {
+  useEffect(async() => {
+    // Initialize todoList
     const indexedTodoList = await db.get();
     setTodoList(indexedTodoList);
-  };
-
-  useEffect(() => {
-    initTodoList();
   }, []);
 
   return (
