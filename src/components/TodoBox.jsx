@@ -12,7 +12,7 @@ const TodoBox = () => {
       const db = new DB('todoList');
       const indexedTodoList = await db.get();
       setTodoList(indexedTodoList);
-    }
+    };
     initTodoList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
